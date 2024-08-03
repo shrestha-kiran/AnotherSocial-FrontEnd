@@ -13,6 +13,7 @@
         :root {
             --primary: #38aaec;
             --primary-hover: #b0e2ff;
+            --font1: "Marcellus", serif;
         }
         .nav-items>li>a {
             @apply h-12 px-4 hover:bg-gray-700 rounded-lg flex items-center gap-2
@@ -22,7 +23,10 @@
             line-height: 1.2;
             font-weight: bold;
             margin-bottom: 1rem;
-            font-family: "Marcellus", serif;
+            font-family: var(--font1);
+        }
+        .font1 {
+            font-family: var(--font1);
         }
         .button {
             display: inline-flex;
@@ -50,10 +54,22 @@
         .button:active {
             transform: scale(0.95);
         }
+        .card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            background-color: white;
+            padding-bottom: 1rem;
+
+        }
     </style>
 </head>
-<body>
-    <header class="flex items-center justify-between px-8 bg-gray-800 h-20 text-white sticky top-0 z-50">
+<body class="bg-gray-100">
+    <header class="flex items-center justify-between px-8 bg-gray-800 h-16 text-white sticky top-0 z-50">
         <logo> 
             <a class="flex items-center gap-1" href="">
                 <img class="h-8 -mt-1" src="https://img.icons8.com/badges/96/place-marker.png" alt="place-marker"/>
@@ -82,6 +98,49 @@
             <a class="button" href="">Get Started!</a>
         </div>
     </hero>
+
+    <content class="grid grid-cols-3 max-w-7xl mx-auto mt-6">
+        <main class="col-span-2 mx-[10%]">
+            <article class="card w-[80%] mx-auto">
+                <div class="flex justify-between items-center px-2 h-12 mb-0">
+                    <h3 class="text-lg font-bold w-[50%] truncate">Sample Title</h3>
+                    <div class="text-sm text-gray-500">
+                        flicker @
+                        <a href="" target="blank" class="hover:underline">Kiran Shrestha</a>
+                    </div>
+                </div>
+                <figure>
+                    <a href=""><img class="w-full" src="https://images.unsplash.com/photo-1722453614851-56ce00d84aa0?q=80&w=1369&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""></a>
+                </figure>
+                <div class="p-2">
+                    <a class="flex items-center gap-1" href="">
+                        <img class="w-8 h-8 rounded-full" width="96" height="96" src="https://img.icons8.com/emoji/96/spouting-whale.png" alt="spouting-whale"/>
+                        <span class="font-bold hover:underline">Kiran Shrestha</span>
+                    </a>
+                    <p class="text-s px-9 font1">Random Image from the free site</p>
+                    <div class="flex items-center gap-4 text-sm mt-4 mx-9">
+                        <a href="" class="bg-gray-200 rounded px-3 py-1 hover:bg-gray-500 hover:text-white">Animals</a>
+                        <a href="" class="bg-gray-200 rounded px-3 py-1 hover:bg-gray-500 hover:text-white">Cute</a>
+                    </div>
+                    
+                </div>
+                <div class="flex items-center justify-between pl-11 pr-4 py-2 text-sm">
+                    <a href="" class="font-bold hover:underline">Comments <span class="font-light text-gray-500 ml-2">3</span></a>
+                    <div class="flex items-center justify-content gap-4 [&>a:hover]:underline">
+                        <div class="flex items-center gap-1">
+                            <img class="w-5 -mt-1"src="https://img.icons8.com/ios/100/facebook-like--v1.png" alt="facebook-like--v1"/>1</div>
+                        <a href="">Like</a>
+                        <a href="">Comment</a>
+                        <a href="">Delete</a>
+                    </div>
+                </div>
+                
+            </article>
+        </main>
+        <aside class="col-span-1 mr-[20%] bg-red-200">
+            Sidebar
+        </aside>
+    </content>
     
 </body>
 </html>
