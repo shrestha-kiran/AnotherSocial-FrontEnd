@@ -101,19 +101,46 @@
         .highlight {
             @apply bg-sky-100;
         }
+        .titleBlip {
+            @apply text-5xl font-bold;
+            animation: blip 1s fadeIn;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            } 
+        }
         
     </style>
 </head>
 <body class="bg-gray-100">
-    <header class="flex items-center justify-between px-8 bg-sky-800 h-16 text-white sticky top-0 z-50 ">
-        <logo> 
-            <a class="flex items-center gap-1" href="">
-                <img class="h-8 -mt-1" src="https://img.icons8.com/badges/96/place-marker.png" alt="place-marker"/>
-                <span>AnotherSocial</span>
-            </a>
-        </logo>
-        <nav>
-            <ul class="flex items-center nav-items">
+    <header x-data="{ mobilenavOpen: false }" class="md:flex items-center justify-between [&>*]:px-8 bg-sky-800 h-20 text-white sticky top-0 z-50 ">
+        <div class="flex items-center justify-between h-20">
+            <logo> 
+                <a class="flex items-center gap-1" href="">
+                    <img class="h-8 -mt-1" src="https://img.icons8.com/badges/96/place-marker.png" alt="place-marker"/>
+                    <span>AnotherSocial</span>
+                </a>
+            </logo>
+            <mobileIcon class="md:hidden">
+                <a @click="mobilenavOpen = !mobilenavOpen" class="h-12 w-12 flex items-center justify-center cursor-pointer hover:bg-grey-700 rounded-lg">
+                    <img class="w-6 h-6 select-none" x-show="!mobilenavOpen" src="https://img.icons8.com/ios-glyphs/30/menu--v1.png" alt="menu--v1"/>
+                    <img class="w-6 h-6 select-none" x-show="mobilenavOpen" x-cloak src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
+                </a>
+            </mobileIcon>
+        </div>
+        <nav x-show="mobilenavOpen" x-cloak class="md:!block bg-sky-800 h-screen w-screen md:h-auto md:w-auto -mt-20 md:mt-0 absolute md:relative z-[-1]"
+        x-transition:enter="duration-300 ease-out"
+        x-transition:enter-start="opacity-0 -translate-y-96"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        >
+            <ul class="flex items-center nav-items flex-col md:flex-row gap-6 md:gap-0 justify-center h-full -translate-y-10 md:translate-y-0">
                 <li><a href="">Home</a></li>
                 <li><a href="">Create Post</a></li>
                 <li x-data="{ dropdownOpen: false }" class="relative">
@@ -138,7 +165,7 @@
     <hero class="grid bg-gray-700 text-white text-center bg-cover bg-no-repeat bg-cover bg-[url('https://cdn.pixabay.com/photo/2023/08/22/10/52/city-8206042_960_720.png')]">
         <div class="col-start-1 row-start-1 bg-sky-800 bg-opacity-80 w-full h-full "></div>
         <div class="col-start-1 row-start-1 px-8 py-24 ">
-            <h1>Welcome to AnotherSocial</h1>
+            <h1 class="titleBlip">Welcome to AnotherSocial</h1>
             <p class="text-lg font-bold mb-5">Share your ideas with others</p>
             <a class="button" href="">Get Started!</a>
         </div>
