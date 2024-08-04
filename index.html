@@ -12,17 +12,29 @@
     <style type="text/tailwindcss">
         :root {
             --primary: #38aaec;
-            --primary-hover: #b0e2ff;
+            --primary-hover: rgb(179, 227, 255);
             --font1: "Marcellus", serif;
         }
         .nav-items>li>a {
-            @apply h-12 px-4 hover:bg-gray-700 rounded-lg flex items-center gap-2
+            @apply h-12 px-4 hover:bg-gray-700 rounded-lg flex items-center gap-2;
         }
         h1 {
             font-size: 4rem;
             line-height: 1.2;
             font-weight: bold;
             margin-bottom: 1rem;
+            font-family: var(--font1);
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: bold;
+            font-family: var(--font1);
+        }
+        h3 {
+            font-size: 2rem;
+            line-height: 0.75;
+            font-weight: bold;
             font-family: var(--font1);
         }
         .font1 {
@@ -44,7 +56,7 @@
             box-shadow: 0 4px 3px rgba(0,0,0,0.1);
             transition-property: transform;
             transition-duration: 0.2s;
-            color: white;
+            color: rgb(255, 255, 255);
             background-color: var(--primary);
         }
         .button:hover {
@@ -62,14 +74,35 @@
             border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
-            background-color: white;
+            background-color: rgb(125,211,252,0.4); /* Glassy background */
             padding-bottom: 1rem;
-
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(233, 191, 191, 0.3);
         }
+        .tag-button {
+            @apply bg-sky-300 rounded-md text-black px-3 py-1 transition-colors;
+            /* background-color: var(--primary); */
+        }
+        .tag-button:hover {
+            /* background-color: var(--primary-hover); */
+            @apply bg-sky-100;
+            color: black;
+        }
+        .hoverlist>*  {
+            @apply hover:bg-sky-300 rounded-md transition duration-150;
+        }
+        .hoverlist>*>a {
+            @apply flex items-center py-2 px-4;
+        }
+        .highlight {
+            @apply bg-sky-100;
+        }
+        
     </style>
 </head>
 <body class="bg-gray-100">
-    <header class="flex items-center justify-between px-8 bg-gray-800 h-16 text-white sticky top-0 z-50">
+    <header class="flex items-center justify-between px-8 bg-sky-800 h-16 text-white sticky top-0 z-50 ">
         <logo> 
             <a class="flex items-center gap-1" href="">
                 <img class="h-8 -mt-1" src="https://img.icons8.com/badges/96/place-marker.png" alt="place-marker"/>
@@ -90,8 +123,8 @@
             </ul>
         </nav>
     </header>
-    <hero class="grid bg-gray-700 text-white text-center bg-cover bg-no-repeat bg-center bg-[url('https://cdn.pixabay.com/photo/2014/10/07/13/48/mountain-477832_960_720.jpg')]">
-        <div class="col-start-1 row-start-1 bg-gray-800 bg-opacity-75 w-full h-full "></div>
+    <hero class="grid bg-gray-700 text-white text-center bg-cover bg-no-repeat bg-cover bg-[url('https://cdn.pixabay.com/photo/2023/08/22/10/52/city-8206042_960_720.png')]">
+        <div class="col-start-1 row-start-1 bg-sky-800 bg-opacity-80 w-full h-full "></div>
         <div class="col-start-1 row-start-1 px-8 py-24 ">
             <h1>Welcome to AnotherSocial</h1>
             <p class="text-lg font-bold mb-5">Share your ideas with others</p>
@@ -102,7 +135,7 @@
     <content class="grid grid-cols-3 max-w-7xl mx-auto mt-6">
         <main class="col-span-2 mx-[10%]">
             <article class="card w-[80%] mx-auto">
-                <div class="flex justify-between items-center px-2 h-12 mb-0">
+                <div class="flex justify-between items-center px-4 h-12 mb-0">
                     <h3 class="text-lg font-bold w-[50%] truncate">Sample Title</h3>
                     <div class="text-sm text-gray-500">
                         flicker @
@@ -119,8 +152,8 @@
                     </a>
                     <p class="text-s px-9 font1">Random Image from the free site</p>
                     <div class="flex items-center gap-4 text-sm mt-4 mx-9">
-                        <a href="" class="bg-gray-200 rounded px-3 py-1 hover:bg-gray-500 hover:text-white">Animals</a>
-                        <a href="" class="bg-gray-200 rounded px-3 py-1 hover:bg-gray-500 hover:text-white">Cute</a>
+                        <a href="" class="tag-button">Animals</a>
+                        <a href="" class="tag-button">Cute</a>
                     </div>
                     
                 </div>
@@ -137,9 +170,65 @@
                 
             </article>
         </main>
-        <aside class="col-span-1 mr-[20%] bg-red-200">
-            Sidebar
+        <aside class="col-span-1 mr-[20%]">
+            <section class="card p-4">
+                <h2 class="text-lg pb-2">Categories</h2>
+                <ul class="hoverlist">
+                    <li class="highlight"><a href="">
+                            <img class="w-6 h-6 object-cover mr-2" src="https://img.icons8.com/ultraviolet/40/group-task.png" alt="group-task"/>
+                            <span class="font-bold text-sm">Social</span>
+                    </a></li>
+                    <li><a href="">
+                        <img class="w-6 h-6 object-cover mr-2" src="https://img.icons8.com/color/48/us-capitol.png" alt="us-capitol"/>
+                        <span class="font-bold text-sm">Politics</span>
+                    </a></li>
+                    <li><a href="">
+                        <img class="w-6 h-6 object-cover mr-2" src="https://img.icons8.com/external-rabit-jes-outline-color-rabit-jes/62/external-sport-education-rabit-jes-outline-color-rabit-jes.png" alt="external-sport-education-rabit-jes-outline-color-rabit-jes"/>
+                        <span class="font-bold text-sm">Sport</span>
+                    </a></li>
+                    <li><a href="">
+                        <img class="w-6 h-6 object-cover mr-2" src="https://img.icons8.com/color-glass/48/school.png" alt="school"/>
+                        <span class="font-bold text-sm">Educational</span>
+                    </a></li>
+                    <li><a href="">
+                        <img class="w-6 h-6 object-cover mr-2" src="https://img.icons8.com/ultraviolet/40/more.png" alt="more"/>
+                        <span class="font-bold text-sm">Others</span>
+                    </a></li>
+                </ul>
+            </section>
+            <section class="card p-4">
+                <h2 class="text-lg pb-2">Top Posts</h2>
+                <ul class="hoverlist">
+                    <li><a href="">
+                        <img class="w-10 h-10 rounded-lg object-cover mr-3" src="https://cdn.pixabay.com/photo/2023/09/05/14/39/old-8235289_960_720.jpg" alt="">
+                        <img class="w-6 h-6 rounded-full object-cover mr-0.5" src="https://img.icons8.com/emoji/96/spouting-whale.png" alt="spouting-whale"/>
+                        <span class="font-bold text-sm mr-1">testUser</span> 
+                        <span class="text-sm font-light text-gray-500">(5 Likes)</span>
+                    </a></li>
+                    <li><a href="">
+                        <img class="w-10 h-10 rounded-lg object-cover mr-3" src="https://cdn.pixabay.com/photo/2023/09/05/14/39/old-8235289_960_720.jpg" alt="">
+                        <img class="w-6 h-6 rounded-full object-cover mr-0.5" src="https://img.icons8.com/emoji/96/spouting-whale.png" alt="spouting-whale"/>
+                        <span class="font-bold text-sm mr-1">testUser</span> 
+                        <span class="text-sm font-light text-gray-500">(5 Likes)</span>
+                    </a></li>
+            </section>
+
+            <section class="card p-4">
+                <h2 class="text-lg pb-2">Captions</h2>
+                <ul class="hoverlist">
+                    <li><a href="">
+                        <img class="w-8 h-8 rounded-full object-cover mr-0.5" src="https://img.icons8.com/emoji/96/spouting-whale.png" alt="spouting-whale"/>
+                        <span class="font-bold text-sm mr-1">testUser</span> 
+                        <span class="text-sm font-light text-gray-500">(50 Likes)</span>
+                    </a></li>
+                    <li><a href="">
+                        <img class="w-8 h-8 rounded-full object-cover mr-0.5" src="https://img.icons8.com/emoji/96/koala-emoji.png" alt="koala-emoji"/>
+                        <span class="font-bold text-sm mr-1">testUser</span> 
+                        <span class="text-sm font-light text-gray-500">(45 Likes)</span>
+                    </a></li>
+            </section>
         </aside>
+        
     </content>
     
 </body>
